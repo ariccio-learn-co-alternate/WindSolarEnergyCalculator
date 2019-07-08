@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_203320) do
+ActiveRecord::Schema.define(version: 2019_07_08_220429) do
 
   create_table "locations", force: :cascade do |t|
     t.string "address"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_07_08_203320) do
     t.integer "location_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
     t.index ["location_id"], name: "index_users_on_location_id"
   end
 
