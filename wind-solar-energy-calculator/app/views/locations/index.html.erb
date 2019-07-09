@@ -1,0 +1,25 @@
+<!-- shows all saved locations,  
+Search new location. 
+Show national average cost per solar watt, wind watt.  -->
+
+
+<!-- Show all saved & prior locations -->
+
+
+
+
+<!-- Search new location -->
+ <!-- **** Check if Inner Text Concatenation works!  -->
+<% form_for @location_query do |f| %>
+  <%= f.text_field "Select Nearest City" %>
+  <%= f.collection_select :id, WindValue.all, :id, (:city + ", " + :state)  %>
+  <%= f.submit %>
+<% end %>
+
+<!-- Enter Solar , Wind  - Unit Price & Watts, Model Name -->
+<!-- **** Need table to store devices!  -->
+
+
+
+
+<!-- Show national average cost per solar watt, wind watt. -->

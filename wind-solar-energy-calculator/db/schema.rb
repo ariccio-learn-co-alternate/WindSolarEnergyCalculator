@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_203320) do
+ActiveRecord::Schema.define(version: 2019_07_09_143322) do
 
   create_table "locations", force: :cascade do |t|
     t.string "address"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_07_08_203320) do
     t.integer "wind_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "city"
+    t.string "state"
   end
 
   create_table "solars", force: :cascade do |t|
@@ -40,11 +42,19 @@ ActiveRecord::Schema.define(version: 2019_07_08_203320) do
     t.index ["location_id"], name: "index_users_on_location_id"
   end
 
+  create_table "wind_values", force: :cascade do |t|
+    t.string "city"
+    t.string "state"
+    t.float "speed"
+  end
+
   create_table "winds", force: :cascade do |t|
     t.float "speed"
     t.integer "location_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "city"
+    t.string "state"
     t.index ["location_id"], name: "index_winds_on_location_id"
   end
 

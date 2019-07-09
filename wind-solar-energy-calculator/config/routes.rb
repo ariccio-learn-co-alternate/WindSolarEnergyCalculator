@@ -3,4 +3,14 @@ Rails.application.routes.draw do
   # get 'welcome/index'
  
   root 'landing#index'
+
+  #Users
+  get '/welcome', to: "users#welcome"
+  get "/login", to: "users#login"
+  get "/create", to: "users#create"
+
+  #Locations
+  get "/index", to: "locations#index", as: "locations"
+  post "/results", to: "locations#results", as: "results"
+
 end

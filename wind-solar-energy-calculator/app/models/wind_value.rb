@@ -1,0 +1,4 @@
+class WindValue < ApplicationRecord
+    
+  end
+  

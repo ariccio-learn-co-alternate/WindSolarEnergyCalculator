@@ -1,12 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
 CITY_WIND_DATA= [
 [' KANSAS CITY','MO',10.3846153846154],
 [' GRAND FORKS','ND',10.2769230769231],
@@ -273,22 +264,3 @@ CITY_WIND_DATA= [
 [' CHEYENNE','WY',12.2769230769231],
 [' GUAM','PC',9.67692307692308]
 ]
-
-
-CITY_WIND_DATA.each do |data_line|
-    # create location first, it owns wind & solar, 
-    # so wind holds the foreign key
-    
-    # l = Location.new
-    # l.city = data_line[0].strip
-    # l.state = data_line[1]
-    # l.save
-    # loc = Location.find(l.id)
-
-    w = WindValue.new
-    w.city = data_line[0].strip
-    w.state = data_line[1]
-    w.speed = data_line[2]
-    #w.location_id = loc.id
-    w.save
-end
