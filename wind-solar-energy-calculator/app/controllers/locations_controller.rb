@@ -2,12 +2,22 @@ class LocationsController < ApplicationController
     before_action :authorized?
     
     def index
-        @location_query = nil
+        @search
         @wind_city_options = WindValue.all
-        byebug
+
+    
+        @states = WindValue.all.map do |w|
+            w.state
+        end.uniq
+
         #@locations = Location.all
     
         #redirect_to results_path
+    end
+
+
+    def state 
+    
     end
 
 
