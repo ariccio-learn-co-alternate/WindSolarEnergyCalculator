@@ -8,17 +8,10 @@ Rails.application.routes.draw do
   get '/signup-as-guest', to: 'users#guestcreate', as: 'guest'
 
 
-  get '/locations', to: 'locations#show'
-
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
   post '/sessions', to: 'sessions#create'
   root 'landing#index'
-
-  #Users
-  get '/welcome', to: "users#welcome"
-  get "/login", to: "users#login"
-  get "/create", to: "users#create"
 
   #Locations
   get "/index", to: "locations#index", as: "locations"
