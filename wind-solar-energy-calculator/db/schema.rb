@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_07_09_143322) do
-=======
-ActiveRecord::Schema.define(version: 2019_07_08_220429) do
->>>>>>> cc1790d457598fbeafc091f4b9f3f685bfee3ac0
 
   create_table "locations", force: :cascade do |t|
     t.string "address"

@@ -1,0 +1,13 @@
+
+<form action="/search" method="get" >
+    <select name="city">
+        <% @wind_city_options.map do |c| %>
+            if c.state == @search
+            <option value= "<%=c.id%>" >
+                <%=c.city%>
+            </option>
+            <% end %>
+        <% end %>
+    </select>
+    <input type="submit" value="Compare Wind and Solar">
+</form>
