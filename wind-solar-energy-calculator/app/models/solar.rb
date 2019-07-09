@@ -56,6 +56,8 @@ module PVWATTS_DATA
     default: :fixed_roof_mounted #the PVWatt default is open rack, but we'll assume its roof mounted!
   }
 end
+PVWATTS_API_URL = "https://developer.nrel.gov/api/pvwatts/v6.json"
+
 
 def request_url(address)
   "#{PVWATTS_API_URL}?api_key=#{pvwatts_API_key}" +
@@ -80,15 +82,15 @@ class Solar < ApplicationRecord
 
   include PVWATTS_DATA
   belongs_to :location
-  PVWATTS_API_URL = "https://developer.nrel.gov/api/pvwatts/v6.json"
 
   def solar_data(address)
     url = request_url(address)
     response = HTTParty.get(url, format: :plain)
     # byebug
     parsed = JSON.parse(response, symbolize_names: true)
-    byebug
-
+    @ac_annual = parsed[:outputs][:ac_annual]
+    @solrad_annual = parsed[:outputs][:solrad_annual]
+    # byebug
   end
 
 
