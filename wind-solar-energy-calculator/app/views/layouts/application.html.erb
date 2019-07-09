@@ -10,6 +10,28 @@
   </head>
 
   <body>
+  <%
+=begin%>
+  based on https://www.railstutorial.org/book/filling_in_the_layout
+<%
+=end%>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div style="text-align:right" class="container">
+        <nav>
+          <p class="nav navbar-nav navbar-right">
+            <%if logged_in? %>
+            <%= link_to( user.username, locations_path )%>
+            <%= link_to "Log out", logout_path %>
+            <%else%>
+            <%= link_to( "login", login_path )%>
+            
+            <%end%>
+        </nav>
+      </div>
+    </header>
+ 
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>

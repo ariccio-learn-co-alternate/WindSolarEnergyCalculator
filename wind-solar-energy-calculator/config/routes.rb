@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new', as: 'signup'
   post '/signup', to: 'users#new'
   post '/users', to: 'users#create'
-  post '/signup-as-guest', to: 'users#guestcreate', as: 'guest'
+  get '/signup-as-guest', to: 'users#guestcreate', as: 'guest'
 
+
+  get '/locations', to: 'locations#show'
 
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
