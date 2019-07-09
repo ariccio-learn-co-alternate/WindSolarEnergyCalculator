@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   get "/index", to: "locations#index", as: "locations"
   post "/results", to: "locations#results", as: "results"
 
+
+  get '/solars/new', to: 'solars#new'
+  post '/solars/', to: 'solars#create'
 end

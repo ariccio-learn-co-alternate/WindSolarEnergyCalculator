@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-
+    before_action :authorized?
     
     def index
         @location_query = nil
