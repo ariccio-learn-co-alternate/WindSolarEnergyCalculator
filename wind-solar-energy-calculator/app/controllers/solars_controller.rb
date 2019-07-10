@@ -7,7 +7,7 @@ class SolarsController < ApplicationController
     def create
         # byebug
         @solar = Solar.new(solar_params)
-        @solar.location = user.location
+        # @solar.location = user.location
         if @solar.valid?
             @solar.save
             redirect_to locations_path
