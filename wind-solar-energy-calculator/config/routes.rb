@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 
   #Locations
   get "/index", to: "locations#index", as: "locations"
-  get '/locations', to: 'locations#show', as: 'locations_show'
   post "/state", to: "locations#state"
   get "/state", to: "locations#state", as: "states"
   #post "/results", to: "locations#results"
@@ -23,5 +22,8 @@ Rails.application.routes.draw do
 
   get '/solars/new', to: 'solars#new'
   post '/solars/', to: 'solars#create'
+
+
+  get '/locations/:id', to: 'locations#show', as: 'locations_show'
   get '/solars/:id', to: 'solars#show', as: 'solars_show'
 end
