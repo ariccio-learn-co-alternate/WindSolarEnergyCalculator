@@ -1,19 +1,12 @@
-<<<<<<< HEAD
 
-<form action="/search" method="get" >
-    <select name="city">
-        <% @wind_city_options.map do |c| %>
-            if c.state == @search
-            <option value= "<%=c.id%>" >
-=======
-<form action="/search" method="get" >
+
+<form action="/results" method="get" >
     <input type="hidden" name="authenticity_token" value="token_value">
     <select name="city">
         <% @wind_city_options.map do |c| %>
       
-            <%if c.state == @search %>
-                <option value= "<%=c.id%>" >
->>>>>>> tori_index_pg
+            <%if c.state == @state %>
+                <option value= "<%=c.city%>" >
                 <%=c.city%>
             </option>
             <% end %>

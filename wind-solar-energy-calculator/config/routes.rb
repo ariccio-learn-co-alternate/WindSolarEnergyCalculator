@@ -14,11 +14,11 @@ Rails.application.routes.draw do
   root 'landing#index'
 
   #Locations
-  #Locations
   get "/index", to: "locations#index", as: "locations"
   post "/state", to: "locations#state"
   get "/state", to: "locations#state", as: "states"
-  post "/results", to: "locations#results", as: "results"
+  #post "/results", to: "locations#results"
+  get "/results", to: "locations#results"
 
   get '/solars/new', to: 'solars#new'
   post '/solars/', to: 'solars#create'

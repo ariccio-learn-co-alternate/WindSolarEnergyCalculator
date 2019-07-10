@@ -1,3 +1,4 @@
 class Location < ApplicationRecord
-    has_one :solar, :wind
+    has_one :solar 
+    has_one :wind
 end
