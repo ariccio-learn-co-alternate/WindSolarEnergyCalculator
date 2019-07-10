@@ -3,9 +3,39 @@ Button to Save to Locations -->
 
 <!-- User saving locations- would need join table! -->
 
-Chosen Location: <%=@city%>, <%=@state%> 
+<h1>Chosen Location: <%=@city%>, <%=@state%> <br><br></h1>
+
+Annual Energy Output of a 5,000 watt turbine with 18 ft. diameter bladespan: <b><%=@annual_wind_energy.to_i%>   kWh / Year</b><br><br>
+
+Given U.S. average energy usage of 908 kWh a month, 
+
+<br><br><br><br>
+
+<%= link_to "Research Another City", "/index" %><br><br>
+
+Least Windy Ten Cities:
+<ul><%@windiest_cities.each_with_index do |c, index| %>
+    <% if index <10 %>
+        <li><%=c.city%>, <%=c.state%> </li>
+    <%else%>
+        <%break%>   
+    <%end%>
+<%end%>
+</ul><br><br>
+
+Windiest Ten Cities:
+<% @windiest_cities = @windiest_cities.reverse%>
+<ul><%@windiest_cities.each_with_index do |c, index| %>
+    <% if index <10 %>
+        <li><%=c.city%>, <%=c.state%> </li>
+    <%else%>
+        <%break%>   
+    <%end%>
+<%end%>
+</ul><br><br>
 
 
+<%= %>
 <!-- 
 Display Ideas: 
 
@@ -14,4 +44,5 @@ Solar ones to display:
 @solrad_annual  #For fun
 
 Windiest 10 Cities
+
 Sunniest 10 Cities -->
