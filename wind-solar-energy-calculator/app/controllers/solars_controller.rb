@@ -17,7 +17,7 @@ class SolarsController < ApplicationController
         @solar.solrad_annual = api_result[:solrad_annual]
         if @solar.valid?
             @solar.save
-            redirect_to locations_show_path
+            redirect_to locations_show_path(@solar.location)
         else
             byebug
             redirect_to solars_new_path

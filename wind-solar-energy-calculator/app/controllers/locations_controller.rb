@@ -35,6 +35,10 @@ class LocationsController < ApplicationController
                 c.speed
             end
         @annual_wind_energy = annual_turbine_energy
+        # for strech goals, will add multiple locations. For now, make sure it's empty.
+        user.location << Location.create!(state: @state, city: @city, user: user)
+
+        @sites = user.location
     end
 
     def annual_turbine_energy
@@ -43,8 +47,6 @@ class LocationsController < ApplicationController
         return (0.01328 * (@rotor_diam_ft**2) * (@speed**3) )
         
         # byebug
-        # for strech goals, will add multiple locations. For now, make sure it's empty.
-        user.location << Location.create!(state: @state, city: @city, user: user)
     end
 
 
