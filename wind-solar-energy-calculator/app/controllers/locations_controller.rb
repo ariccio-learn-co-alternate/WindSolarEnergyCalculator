@@ -1,13 +1,25 @@
+
 class LocationsController < ApplicationController
     before_action :authorized?
+
     
     def index
-        @location_query = nil
+        @user = session[:user_id] 
+        @states 
+        @states = WindValue.all.map do |w|
+            w.state
+        end.uniq.sort
+    end
+
+
+    def state  #search level 2 
+        session[:states] = @states
+        @user = session[:user_id]
+        session[:the_search] = params
+        @the_search = session[:the_search]
+        @search = params
+        @state = params[:states] 
         @wind_city_options = WindValue.all
-        byebug
-        #@locations = Location.all
-    
-        #redirect_to results_path
     end
 
 
@@ -16,13 +28,15 @@ class LocationsController < ApplicationController
     end
 
 
-
-
-
-
     def show
         # byebug
     end
 
+
+    private
+
+    def search_params
+        params.require(:state).permit(:state)
+    end
 
 end
