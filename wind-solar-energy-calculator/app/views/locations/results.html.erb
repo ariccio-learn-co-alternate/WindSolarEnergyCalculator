@@ -5,6 +5,12 @@ Button to Save to Locations -->
 
 Chosen Location: <%=@city%>, <%=@state%> 
 
+<br>
+<%if user.location.count{|x| x.solar != nil} > 0%>
+    <%=link_to user.location.solar_id.one_line_repr, solars_show(user.location.solar_id)%>
+<%else%>
+    <%=link_to "Create solar power resources", solars_new_path%>
+<%end%>
 
 <!-- 
 Display Ideas: 

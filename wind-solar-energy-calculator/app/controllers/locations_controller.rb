@@ -21,7 +21,7 @@ class LocationsController < ApplicationController
         @state = params[:state] 
         
         @wind_city_options = WindValue.all
-        Location.new(state: @state, solar_id: nil, wind_id: nil)
+        
     end
 
 
@@ -30,6 +30,10 @@ class LocationsController < ApplicationController
         @city = params[:city]
         stateobj = WindValue.find_by(city: @city)  # go into Location table
         @state = stateobj.state
+        
+        # byebug
+        # for strech goals, will add multiple locations. For now, make sure it's empty.
+        user.location << Location.create!(state: @state, city: @city, user: user)
     end
 
 
