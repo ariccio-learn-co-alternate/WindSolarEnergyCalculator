@@ -39,6 +39,10 @@ class LocationsController < ApplicationController
         @grid_energy_cost = 0.1326
         @monthly_savings = 0.1326 * @annual_wind_energy / 12
         @payback_pd = @cost / @monthly_savings /12 
+        # for strech goals, will add multiple locations. For now, make sure it's empty.
+        user.location << Location.create!(state: @state, city: @city, user: user)
+
+        @sites = user.location
     end
 
     def annual_turbine_energy
@@ -47,8 +51,6 @@ class LocationsController < ApplicationController
         return (0.01328 * (@rotor_diam_ft**2) * (@speed**3) )
         
         # byebug
-        # for strech goals, will add multiple locations. For now, make sure it's empty.
-        user.location << Location.create!(state: @state, city: @city, user: user)
     end
 
 
