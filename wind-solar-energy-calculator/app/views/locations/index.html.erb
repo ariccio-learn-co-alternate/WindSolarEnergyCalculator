@@ -9,16 +9,23 @@ Show national average cost per solar watt, wind watt.  -->
 
 
 <!-- Search new location -->
- <!-- **** Check if Inner Text Concatenation works!  -->
+<<<<<<< HEAD
+
+=======
 
 
-  <%= form_tag index_path, :method => :get, :class => 'form-search' do %>
-   <div class="input-append">
-       <%byebug%>
-    <%= collection_select :search, self, @states, self, self  %>
-    <button type="submit" class="btn">Search</button>
-   </div>
-  <% end %>
+
+ <%= form_tag locations_path, :method => :get, :class => 'form-search' do %>
+ <div class="input-append">
+    <%= select_tag("statestate", options_for_select(@states)  ) %>
+
+  
+    <%= submit_tag "submit" %>
+ </div>
+<% end %>
+>>>>>>> tori_index_pg
+
+
 
 
 <!-- Enter Solar , Wind  - Unit Price & Watts, Model Name -->
