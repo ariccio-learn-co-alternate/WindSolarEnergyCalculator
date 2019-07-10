@@ -83,14 +83,18 @@ class Solar < ApplicationRecord
   include PVWATTS_DATA
   belongs_to :location
 
-  def solar_data(address)
+  def self.solar_data(address)
     url = request_url(address)
     response = HTTParty.get(url, format: :plain)
     # byebug
     parsed = JSON.parse(response, symbolize_names: true)
-    @ac_annual = parsed[:outputs][:ac_annual]
-    @solrad_annual = parsed[:outputs][:solrad_annual]
+    # @ac_annual = parsed[:outputs][:ac_annual]
+    # @solrad_annual = parsed[:outputs][:solrad_annual]
     # byebug
+    return {
+      ac_annual: parsed[:outputs][:ac_annual],
+      solrad_annual: parsed[:outputs][:solrad_annual]
+    }
   end
 
 
@@ -101,6 +105,9 @@ class Solar < ApplicationRecord
     (tilt <= 90)
   end
 
+  def one_line_repr
+    "#{capacity} kW, #{tilt} degrees, #{ac_annual} kW annual AC power, #{solrad_annual} annual solar radiation."
+  end
 
 
 end

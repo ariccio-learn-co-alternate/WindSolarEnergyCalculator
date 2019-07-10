@@ -22,4 +22,8 @@ Rails.application.routes.draw do
 
   get '/solars/new', to: 'solars#new'
   post '/solars/', to: 'solars#create'
+
+
+  get '/locations/:id', to: 'locations#show', as: 'locations_show'
+  get '/solars/:id', to: 'solars#show', as: 'solars_show'
 end

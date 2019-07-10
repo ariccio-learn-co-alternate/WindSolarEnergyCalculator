@@ -19,7 +19,7 @@ class LocationsController < ApplicationController
         @user = session[:user_id]
         @state = params[:state] 
         @wind_city_options = WindValue.all
-        Location.new(state: @state, solar_id: nil, wind_id: nil)
+        
     end
 
 
@@ -41,11 +41,16 @@ class LocationsController < ApplicationController
         @rotor_diam_ft = 18
         
         return (0.01328 * (@rotor_diam_ft**2) * (@speed**3) )
+        
+        # byebug
+        # for strech goals, will add multiple locations. For now, make sure it's empty.
+        user.location << Location.create!(state: @state, city: @city, user: user)
     end
 
 
     def show
         # byebug
+        @location = Location.find(params[:id])
     end
 
 

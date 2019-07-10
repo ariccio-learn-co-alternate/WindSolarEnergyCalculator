@@ -1,5 +1,6 @@
 <h1>Solar site specification</h1>
 <%=form_tag '/solars' do%>
+    <%=select_tag "solar_site", options_for_select(@sites.collect{|s| [s.address_repr, s.id]})%>
     <%=label_tag 'System Capacity (kW)'%>
     <%=number_field_tag 'solar[capacity]', 5, min:0.5, max:5000, step:0.1%>
     <%=label_tag 'tilt'%>

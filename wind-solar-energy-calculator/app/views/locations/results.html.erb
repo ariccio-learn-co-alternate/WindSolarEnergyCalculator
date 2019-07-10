@@ -6,6 +6,16 @@ Button to Save to Locations -->
 <h1>Chosen Location: <%=@city%>, <%=@state%> <br><br></h1>
 
 Annual Energy Output of a 5,000 watt turbine with 18 ft. diameter bladespan: <b><%=@annual_wind_energy.to_i%>   kWh / Year</b><br><br>
+<br>
+<%if user.location.count{|x| x.solar != nil} > 0%>
+    <ul>
+    <%user.location.each do |loc|%>
+        <li><%=(link_to loc.solar.one_line_repr, solars_show_url(loc.solar.id)) unless loc.solar == nil%></li>
+    <%end%>
+    </ul>
+<%else%>
+    <%=link_to "Create solar power resources", solars_new_path%>
+<%end%>
 
 Given U.S. average energy usage of 908 kWh a month, 
 
