@@ -5,7 +5,7 @@ class SolarsController < ApplicationController
     end
 
     def create
-        byebug
+        # byebug
         @solar = Solar.new(solar_params)
         @solar.location = user.location
         if @solar.valid?
