@@ -35,6 +35,10 @@ class LocationsController < ApplicationController
                 c.speed
             end
         @annual_wind_energy = annual_turbine_energy
+        @cost = 15000
+        @grid_energy_cost = 0.1326
+        @monthly_savings = 0.1326 * @annual_wind_energy / 12
+        @payback_pd = @cost / @monthly_savings /12 
     end
 
     def annual_turbine_energy

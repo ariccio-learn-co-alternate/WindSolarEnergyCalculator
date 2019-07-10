@@ -5,8 +5,13 @@ Button to Save to Locations -->
 
 <h1>Chosen Location: <%=@city%>, <%=@state%> <br><br></h1>
 
-Annual Energy Output of a 5,000 watt turbine with 18 ft. diameter bladespan: <b><%=@annual_wind_energy.to_i%>   kWh / Year</b><br><br>
-<br>
+The average annual wind speed here is: <b><%=number_with_precision(@speed, :precision => 3, :delimiter => ',')%> mph</b>.<br><br>
+Annual Energy Output of a 5,000 watt turbine with 18 ft. diameter bladespan: <b><%=number_with_delimiter(@annual_wind_energy.to_i)%>   kWh / Year</b><br><br>
+Given U.S. average energy usage of 908 kWh per month, and US average energy cost of $<%=@grid_energy_cost%> / kWh, you generate <b>$<%=number_with_precision(@monthly_savings, :precision => 2, :delimiter => ',')%></b> of electricity per month.<br><br>
+Given turbine cost of $<%=number_with_delimiter(@cost)%>, your payback period is: <b><%=number_with_precision(@payback_pd, :precision => 3, :delimiter => ',')%> years</b>
+<br><br>
+
+
 <%if user.location.count{|x| x.solar != nil} > 0%>
     <ul>
     <%user.location.each do |loc|%>
@@ -17,7 +22,6 @@ Annual Energy Output of a 5,000 watt turbine with 18 ft. diameter bladespan: <b>
     <%=link_to "Create solar power resources", solars_new_path%>
 <%end%>
 
-Given U.S. average energy usage of 908 kWh a month, 
 
 <br><br><br><br>
 
