@@ -18,8 +18,9 @@ class SolarsController < ApplicationController
 
 
 
-        api_result = Solar.solar_data(@solar.location.address_repr)
+        api_result = Solar.solar_data(@solar.location.address_repr, @solar.capacity, @solar.tilt)
         @solar.ac_annual = api_result[:ac_annual]
+        # byebug
         session[:ac_annual] = @solar.ac_annual
         @solar.solrad_annual = api_result[:solrad_annual]
         session[:solrad_annual] = @solar.solrad_annual

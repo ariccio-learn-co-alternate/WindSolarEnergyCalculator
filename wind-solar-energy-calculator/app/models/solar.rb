@@ -59,14 +59,14 @@ end
 PVWATTS_API_URL = "https://developer.nrel.gov/api/pvwatts/v6.json"
 
 
-def request_url(address)
+def request_url(address, capacity, tilt)
   "#{PVWATTS_API_URL}?api_key=#{pvwatts_API_key}" +
   "&format=json" +
-  "&system_capacity=5000" + 
+  "&system_capacity=#{capacity}" + 
   "&module_type=0" +
   "&losses=14" + 
   "&array_type=1" + 
-  "&tilt=40" +
+  "&tilt=#{tilt}" +
   "&azimuth=180" +
   "&address=\"#{address}\""
 
@@ -83,14 +83,14 @@ class Solar < ApplicationRecord
   include PVWATTS_DATA
   belongs_to :location
 
-  def self.solar_data(address)
-    url = request_url(address)
+  def self.solar_data(address, capacity, tilt)
+    url = request_url(address, capacity, tilt)
     response = HTTParty.get(url, format: :plain)
     # byebug
     parsed = JSON.parse(response, symbolize_names: true)
     # @ac_annual = parsed[:outputs][:ac_annual]
     # @solrad_annual = parsed[:outputs][:solrad_annual]
-    # byebug
+    byebug
     return {
       ac_annual: parsed[:outputs][:ac_annual],
       solrad_annual: parsed[:outputs][:solrad_annual]
@@ -106,7 +106,8 @@ class Solar < ApplicationRecord
   end
 
   def one_line_repr
-    "#{capacity} kW, #{tilt} degrees, #{ac_annual} kW annual AC power, #{solrad_annual} annual solar radiation."
+    byebug
+    "#{capacity} kW, #{tilt} degrees, #{ac_annual.truncate(2)} kW annual AC power, #{solrad_annual.truncate(2)} annual solar radiation."
   end
 
 
