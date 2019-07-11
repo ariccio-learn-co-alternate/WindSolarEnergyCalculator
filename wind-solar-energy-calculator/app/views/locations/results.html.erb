@@ -3,7 +3,7 @@ Button to Save to Locations -->
 
 <!-- User saving locations- would need join table! -->
 
-<h1>Chosen Location: <%=@city%>, <%=@state%> (<%=@site.id%>)<br><br></h1>
+<h1>Chosen Location: <%=@city%>, <%=@state%> (<%=@site_id%>)<br><br></h1>
 
 The average annual wind speed here is: <b><%=number_with_precision(@speed, :precision => 3, :delimiter => ',')%> mph</b>.<br>
 <br>
@@ -15,7 +15,8 @@ Given turbine cost of $<%=number_with_delimiter(@cost)%>, your payback period is
 <br><br>
 
 
-<%=@site.one_line_repr%>
+<%=@site.one_line_repr unless (@site == nil)%>
+<%="No solar for #{@location.address_repr}!" if @site == nil %>
 
 <br><br><br><br>
 

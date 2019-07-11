@@ -10,7 +10,7 @@ Show national average cost per solar watt, wind watt.  -->
 <%=user.name%>'s locations
     <ul>
         <%user.location.each do |loc|%>
-            <li><%= link_to(loc.address_repr, results_path(loc.id))%></li>
+            <li><%= link_to(loc.address_repr, location_results_show_path(loc.id))%></li>
         <%end%>
     </ul>
 </p>
