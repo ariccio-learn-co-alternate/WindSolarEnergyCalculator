@@ -109,5 +109,10 @@ class Solar < ApplicationRecord
     "#{capacity} kW, #{tilt} degrees, #{ac_annual} kW annual AC power, #{solrad_annual} annual solar radiation."
   end
 
+  # def solar_monthly_savings
+  #   return ( 0.1326 * @solrad_annual / 12 )
+  # end
+
+
 
 end

@@ -2,9 +2,17 @@
 Button to Save to Locations -->
 
 <!-- User saving locations- would need join table! -->
+<div class="title-bar">
+<h1>Chosen Location: <%=@city.capitalize%>, <%=@state%> (<%=@site_id%>)</h1>
+</div>
+<br>
 
-<h1>Chosen Location: <%=@city%>, <%=@state%> (<%=@site_id%>)<br><br></h1>
-
+<div class="flex-container">
+<div>
+        <div class="circular--landscape">
+<iframe src="https://giphy.com/embed/M8285FEYczPY4" width="480" height="333" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>
+        </div>
+<h2>Wind Potential</h2><br>
 The average annual wind speed here is: <b><%=number_with_precision(@speed, :precision => 3, :delimiter => ',')%> mph</b>.<br>
 <br>
 Annual Energy Output of a 5,000 watt turbine with 18 ft. diameter bladespan: <b><%=number_with_delimiter(@annual_wind_energy.to_i)%>   kWh / Year</b><br>
@@ -12,16 +20,41 @@ Annual Energy Output of a 5,000 watt turbine with 18 ft. diameter bladespan: <b>
 Given U.S. average energy usage of 908 kWh per month, and US average energy cost of $<%=@grid_energy_cost%> / kWh, you generate <b>$<%=number_with_precision(@monthly_savings, :precision => 2, :delimiter => ',')%></b> of electricity per month.<br>
 <br>
 Given turbine cost of $<%=number_with_delimiter(@cost)%>, your payback period is: <b><%=number_with_precision(@payback_pd, :precision => 3, :delimiter => ',')%> years</b>
-<br><br>
+<br><br><br>
+</div>
 
+<div>
+        <div class="circular--landscape">
+<iframe src="https://giphy.com/embed/jk9L41aToGZQA" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p></p>   
+        </div>
+<h2>Solar Potential</h2><br>
 
-<%=@site.one_line_repr unless (@site == nil)%>
+<!-- <%=@site.one_line_repr unless (@site == nil)%> -->
 <%="No solar for #{@location.address_repr}!" if @site == nil %>
 
+The annual average insolation (solar energy recevied) here is: <b><%=number_with_precision($global_ac_annual, :precision => 3, :delimiter => ',')%>  kWh / m2 / day</b>.<br>
+<br>
+Annual Energy Output of a <%=$capacity%> kWh panel at <%=$tilt%> tilt : <b><%=number_with_delimiter($global_solrad_annual.to_i)%>   kWh / year</b>.<br>
+<br>
+Given U.S. average energy usage of 908 kWh per month, and US average energy cost of $<%=@grid_energy_cost%> / kWh, you generate <b>$<%=number_with_precision(@solar_monthly_savings, :precision => 2, :delimiter => ',')%></b> of electricity per month.<br>
+<br>
+Given cost of $<%=number_with_delimiter(@cost)%>, your payback period is: <b><%=number_with_precision(@solar_payback_pd, :precision => 3, :delimiter => ',')%> years</b>
+<br><br>
+
+</div>
+</div>  
+<!-- End Flex boxes.  -->
+
+
+<div class="title-bar">
+<h2>Best Option for <%=@city.capitalize%>, <%=@state%>:  <%=@winner%> Power!</h2><br>
+</div>
 <br><br><br><br>
 
 <%= link_to "Research Another City", "/index" %><br><br>
-
+<br><br>
+<h3> Fun Facts </h3>
+<br><br>
 Least Windy Ten Cities:
 <ul><%@windiest_cities.each_with_index do |c, index| %>
     <% if index <10 %>
@@ -52,6 +85,4 @@ Solar ones to display:
 @ac_annual  #Power
 @solrad_annual  #For fun
 
-Windiest 10 Cities
-
-Sunniest 10 Cities -->
+ -->
