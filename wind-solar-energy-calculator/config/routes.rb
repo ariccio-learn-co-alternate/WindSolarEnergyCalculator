@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   #post "/state", to: "locations#solar_input"  #10:38 AM
   get "/solar_input", to: "locations#solar_input", as: "solar_input"
   #post "/results", to: "locations#results"
-  get "/results", to: "locations#results", as: "results"
+  # get "/results", to: "locations#results", as: "results"
 
 
 

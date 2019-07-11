@@ -8,6 +8,7 @@ class LocationsController < ApplicationController
         @states = WindValue.all.map do |w|
             w.state
         end.uniq.sort
+        # byebug
     end
 
 

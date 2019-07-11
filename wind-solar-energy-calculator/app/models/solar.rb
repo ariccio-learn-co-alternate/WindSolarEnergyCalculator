@@ -90,7 +90,7 @@ class Solar < ApplicationRecord
     parsed = JSON.parse(response, symbolize_names: true)
     # @ac_annual = parsed[:outputs][:ac_annual]
     # @solrad_annual = parsed[:outputs][:solrad_annual]
-    byebug
+    # byebug
     return {
       ac_annual: parsed[:outputs][:ac_annual],
       solrad_annual: parsed[:outputs][:solrad_annual]
@@ -105,8 +105,17 @@ class Solar < ApplicationRecord
     (tilt <= 90)
   end
 
+
+  def self.table_repr_columns
+    "<tr><th>capacity</th><th>tilt</th><th>Annual AC power</th><th>annual solar radiation</th></tr>"
+  end
+
+  def table_repr_row
+    "<td>#{capacity}</td><td>#{tilt}</td><td>#{ac_annual.truncate(2)}</td><td>#{solrad_annual.truncate(2)}</td>"
+  end
+
   def one_line_repr
-    byebug
+    # byebug
     "#{capacity} kW, #{tilt} degrees, #{ac_annual.truncate(2)} kW annual AC power, #{solrad_annual.truncate(2)} annual solar radiation."
   end
 

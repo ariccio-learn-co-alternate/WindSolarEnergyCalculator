@@ -10,7 +10,7 @@ class SolarsController < ApplicationController
     def create
         # byebug
         @solar = Solar.new(solar_params)
-        byebug
+        # byebug
         @solar.location = Location.find(params[:location_id])
         # @city = session[:city]
         # @state = session[:state]
@@ -26,7 +26,7 @@ class SolarsController < ApplicationController
         session[:solrad_annual] = @solar.solrad_annual
         if @solar.valid?
             @solar.save
-            redirect_to results_path #(@solar.location)
+            redirect_to location_results_show_path(params[:location_id]) #(@solar.location)
             #redirect_to locations_show_path(@solar.location)
         else
             byebug
