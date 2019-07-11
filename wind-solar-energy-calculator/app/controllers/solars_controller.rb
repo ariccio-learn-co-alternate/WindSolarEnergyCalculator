@@ -8,12 +8,12 @@ class SolarsController < ApplicationController
 
 
     def create
-        # byebug
+        byebug
         @solar = Solar.new(solar_params)
-        # @solar.location = Location.find(params[:solar_site])
-        @city = session[:city]
-        @state = session[:state]
-        @solar.location = @city +", "+ @state
+        @solar.location = Location.find(params[:solar_site])
+        # @city = session[:city]
+        # @state = session[:state]
+        # @solar.location = @city +", "+ @state
 
 
 

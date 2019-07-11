@@ -16,6 +16,7 @@ class LocationsController < ApplicationController
         #session[:user_id][:state] = @state
         # undefined method `[]=' for 1:Integer
         
+        @city = session[:city]
         @user = session[:user_id]
         @state = params[:state] 
         session[:state] = @state 
@@ -24,11 +25,14 @@ class LocationsController < ApplicationController
 
 
     def solar_input
-        @city = session[:city]
+        # byebug
+        @city = params[:city]
         @state = session[:state]
-        @sites = @city +", "+ @state
+        @site = @city + ", "+ @state
+        # @id = 
         #@sites = user.location   # solar controller version
-
+        user.location << Location.create!(state: @state, city: @city, user: user)
+        @location_id = user.location.last.id
     end
 
 
@@ -53,7 +57,6 @@ class LocationsController < ApplicationController
         @monthly_savings = 0.1326 * @annual_wind_energy / 12
         @payback_pd = @cost / @monthly_savings /12 
         # for strech goals, will add multiple locations. For now, make sure it's empty.
-        user.location << Location.create!(state: @state, city: @city, user: user)
 
         @sites = user.location
     end
