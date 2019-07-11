@@ -29,21 +29,26 @@ class LocationsController < ApplicationController
         @city = params[:city]
         @state = session[:state]
         @site = @city + ", "+ @state
+        byebug
+        session[:city] = @city
         # @id = 
         #@sites = user.location   # solar controller version
         user.location << Location.create!(state: @state, city: @city, user: user)
         @location_id = user.location.last.id
+        session[:location_id] = @location_id
     end
 
 
     def results
         # lookup the state for the city in params
         
-        @city = params[:city]
-        session[:city] = @city
+        # @city = params[:city]
+        # session[:city] = @city
+        @location = Location.find(session[:location_id])
+        @city = @location.city
         stateobj = WindValue.find_by(city: @city)  # go into Location table
         #@state = stateobj.state
-        @state = session[:state]
+        @state = @location.state
         @speed = stateobj.speed
         session[:speed] = @speed
 
@@ -58,7 +63,8 @@ class LocationsController < ApplicationController
         @payback_pd = @cost / @monthly_savings /12 
         # for strech goals, will add multiple locations. For now, make sure it's empty.
 
-        @sites = user.location
+        @site = @location.solar
+
     end
 
     def annual_turbine_energy
