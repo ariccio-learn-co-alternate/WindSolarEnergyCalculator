@@ -8,9 +8,8 @@ class SolarsController < ApplicationController
 
 
     def create
-        # byebug
+  
         @solar = Solar.new(solar_params)
-        # byebug
         @solar.location = Location.find(params[:location_id])
         # @city = session[:city]
         # @state = session[:state]
@@ -24,6 +23,11 @@ class SolarsController < ApplicationController
         session[:ac_annual] = @solar.ac_annual
         @solar.solrad_annual = api_result[:solrad_annual]
         session[:solrad_annual] = @solar.solrad_annual
+        $global_ac_annual = @solar.ac_annual 
+        $global_solrad_annual = @solar.solrad_annual
+        $capacity = @solar.capacity
+        $tilt = @solar.tilt
+
         if @solar.valid?
             @solar.save
             redirect_to location_results_show_path(params[:location_id]) #(@solar.location)

@@ -41,17 +41,17 @@ class LocationsController < ApplicationController
 
 
     def results
-        # lookup the state for the city in params
+
+
+        # refactor below - so either get location fm 
+        # session *OR* fm the /locations/  (all) table
+        @location = Location.find(session[:location_id])
         
-        # @city = params[:city]
-        # session[:city] = @city
-        @location = Location.find(params[:id])
         @city = @location.city
         stateobj = WindValue.find_by(city: @city)  # go into Location table
-        #@state = stateobj.state
         @state = @location.state
         @speed = stateobj.speed
-        session[:speed] = @speed
+        session[:speed] = @speed  # need this at all? 
 
         @windiest_cities=
             WindValue.all.sort_by do |c|
@@ -65,8 +65,12 @@ class LocationsController < ApplicationController
         # for strech goals, will add multiple locations. For now, make sure it's empty.
 
         @site_id = @location.id
-        # byebug
         @site = @location.solar
+
+        @solar_monthly_savings = 0.1326 * $global_ac_annual / 12
+        @solar_payback_pd = @cost / @solar_monthly_savings /12 
+
+        @winner = (@solar_payback_pd > @payback_pd ? "Solar" : "Wind" )
 
     end
 
