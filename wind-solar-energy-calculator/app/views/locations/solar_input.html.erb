@@ -11,15 +11,4 @@
 
 
 
-<%if user.location.count{|x| x.solar != nil} > 0%>
-<%user.location.each do |loc|%>
-    <li><%=(link_to loc.solar.one_line_repr, solars_show_url(loc.solar.id)) unless loc.solar == nil%></li>
-<%end%>
-<%elsif user.location.length > 0%>
-<%user.location.each do |loc|%>
-    <li><%=(link_to "Create solar power resources for #{loc.address_repr}", solars_new_path(loc.id)) unless loc == nil%></li>
-<%end%>
-<%else%>
-No locations?
-<%end%>
 

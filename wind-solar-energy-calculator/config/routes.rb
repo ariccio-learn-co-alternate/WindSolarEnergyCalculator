@@ -17,8 +17,12 @@ Rails.application.routes.draw do
   get "/locations", to: "locations#index", as: "locations"
   post "/state", to: "locations#state"
   get "/state", to: "locations#state", as: "states"
+  #post "/state", to: "locations#solar_input"  #10:38 AM
+  get "/solar_input", to: "locations#solar_input", as: "solar_input"
   #post "/results", to: "locations#results"
-  get "/results", to: "locations#results"
+  get "/results", to: "locations#results", as: "results"
+
+
 
   # get '/solars/new', to: 'solars#new'
   post '/solars/', to: 'solars#create'
