@@ -106,9 +106,9 @@ class Solar < ApplicationRecord
   end
 
 
-  def self.table_repr_columns
-    "<tr><th>capacity</th><th>tilt</th><th>Annual AC power</th><th>annual solar radiation</th></tr>"
-  end
+  # def self.table_repr_columns
+    
+  # end
 
   def table_repr_row
     "<td>#{capacity}</td><td>#{tilt}</td><td>#{ac_annual.truncate(2)}</td><td>#{solrad_annual.truncate(2)}</td>"

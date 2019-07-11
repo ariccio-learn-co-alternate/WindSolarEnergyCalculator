@@ -7,18 +7,33 @@ Show national average cost per solar watt, wind watt.  -->
 
 
 <p>
-<%=user.name%>'s locations
-    <table>
-        <%=raw Solar.table_repr_columns%>
-        <%user.location.each do |loc|%>
+<%if user.location.length > 0%>
+    <%=user.name%>'s locations
+        <table id="locations">
             <tr>
-                <td>
-                    <%= link_to(loc.address_repr, location_results_show_path(loc.id))%>
-                </td>
-                <%=raw loc.solar.table_repr_row unless loc.solar == nil%>
+                <th>Location</th>
+                <th>Capacity (kW)</th>
+                <th>Tilt (degrees)</th>
+                <th>Annual AC power (kWh)</th>
+                <th>Annual solar radiation(kWh/m²/month)</th>
             </tr>
-        <%end%>
-    </table>    
+            <%user.location.each do |loc|%>
+                <tr>
+                    <td>
+                        <%= link_to(loc.address_repr, location_results_show_path(loc.id))%>
+                    </td>
+                    <%if loc.solar != nil%>
+                    <td><%=loc.solar.capacity%></td>
+                    <td><%=loc.solar.tilt%></td>
+                    <td><%=loc.solar.ac_annual.truncate(2)%></td>
+                    <td><%=loc.solar.solrad_annual.truncate(2)%></td>"
+                    <%end%>
+                </tr>
+            <%end%>
+        </table>    
+<%else%>
+You have no locations saved! Please create one.
+<%end%>
 </p>
 
 
