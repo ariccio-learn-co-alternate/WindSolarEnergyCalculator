@@ -25,6 +25,7 @@ class SolarsController < ApplicationController
         if @solar.valid?
             @solar.save
             redirect_to results_path #(@solar.location)
+            #redirect_to locations_show_path(@solar.location)
         else
             byebug
             redirect_to solars_new_path
