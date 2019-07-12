@@ -14,48 +14,228 @@
  *= require_self
  */
 
- table#locations, td, td {
-    border: 1px solid black;
+
+ #header {
+    padding:5px 10px;
+    /* background:#ddd; */
+    }
+
+.title-bar {
+    line-height: 3.8;
+    background-color: #FFECB8;
+    width: 900px;
+    height: 80px;
+    margin: 0 auto;
+    text-align: center
+
+    } 
+
+
+ body{
+ margin: 10px;
+ padding:0;
+ color:#000;
+ background:#faf9de;
  }
 
 
-
- .flex-container {
-    display: flex;
-    padding: 20px;
-    margin: 50px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    flex-direction: row;
-    align-content: center;
-    background-color: #DBDAB4;
-  }
-
-
-  .title-bar {
-    background-color: #FFECB8;
+ /* #wrap {
     width: 900px;
-    height: 100px;
-    margin: 0 auto;
-    text-align: center
+    margin:0 auto;
+    background:#99c;
+    } */
+
+#footer {
+    clear:both;
+    background:#cc9;
+    }
+
+
+ table#locations, td, td {
+    border: 1px solid goldenrod;
+    /* display: inline-block; */
+ }
+
+ h1 {
+    color: #69662e;
+  }
+  h2 {
+    color: #69662e;
   }
 
-  .circular--landscape {
+  /* iframe {
+    /* display: block; */
+    /* -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+         border-radius: 50%; */
+         -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid;
+         width: 250px;
+    display: inline-block;
+  } */
+
+img {
+    margin: 20px;
+    padding: 20px;
+    width: 65%;  
+}
+
+  /* sum of the widths of main & sidebar should be equal to the width given to #wrap */
+
+#main {
+    float:left;
+    width:400px;
+    background:#9c9;
+    padding:10px;
+    display: inline-block;
+    }
+
+#sidebar {
+    float:right;
+    width:400px;
+    padding:10px;
+    background:#9c9;
+    display: inline-block;
+    }
+
+
+.column-span2{
+    column-span: 1;
+}
+
+.circular--landscape {
     display: inline-block;
     position: relative;
     width: 320px;
     height: 320px;
     overflow: hidden;
     border-radius: 50%;
+    display: inline-block;
   }
   
   .circular--landscape img {
     width: auto;
     height: 100%;
-    margin-left: -01px;
+    margin-left: -25px;
+    margin-top: -15px;
+    padding: 6px 0;
+    display: inline-block;
   }
   
   .center-item{
-
+    align-self: center; 
 
   }
+
+
+.flex-container6 {
+    column-count: 2;
+    -webkit-columns: 900px;
+  -moz-columns: 900px;
+  column-width: 900px;
+  -webkit-column-gap: 2em;
+  -moz-column-gap: 2em;
+  column-gap: 2em;    
+  display: inline-block;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  /* -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid; */
+  box-shadow: 2px 2px 5px rgba(117, 108, 25, 0.03);
+}
+
+.flex6 {
+    width: 400px;
+    background: #DBDAB4;
+    height: 650px;
+    /* padding: 1em;
+    margin-bottom: 1.3em; */
+    border-radius: 8px;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border-radius: 8px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    display: inline-block;
+    /* -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid; */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.flex-container5 {
+    /* column-width: 45%, 10%, 45%; */
+    -webkit-columns: 2 350px;
+    -moz-columns: 2 350px;
+    columns: 2 350px;
+    -webkit-column-gap: 2em;
+    -moz-column-gap: 2em;
+    column-gap: 2em;
+    background-color: #DBDAB4;
+  }
+
+  .flex-container3 {
+    /* column-width: 45%, 10%, 45%; */
+    column-width: 350px;
+
+    height: 350px;
+    /* column-count: 3; */
+    column-gap: 40px;
+
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    background-color: #DBDAB4;
+    
+    
+    box-shadow: 2px 2px 5px rgba(117, 108, 25, 0.03);
+    border-radius: 12px;
+  }
+  .flex-container2 {
+    column-width: 45%;
+    height: 350px;
+    column-count: 1;
+    column-gap: 40px;
+
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    background-color: #DBDAB4;
+    
+    
+    box-shadow: 2px 2px 5px rgba(117, 108, 25, 0.03);
+    border-radius: 12px;
+  }
+
+ .gggflex-container {
+    display: flex;
+    /* margin: .25rem;
+    padding: .25rem; */
+    padding: 15px;
+    margin: 20px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    flex-direction: row;
+    align-content: center;
+    background-color: #DBDAB4;
+    box-shadow: 2px 2px 5px rgba(117, 108, 25, 0.03);
+    border-radius: 4px;
+  }
+
+
+
+

@@ -5,51 +5,51 @@ Show national average cost per solar watt, wind watt.  -->
 
 <!-- Show all saved & prior locations -->
 
-
-<p>
-<%if user.location.length > 0%>
-    <%=user.name%>'s locations
-        <table id="locations">
-            <tr>
-                <th>Location</th>
-                <th>Capacity (kW)</th>
-                <th>Tilt (degrees)</th>
-                <th>Annual AC power (kWh)</th>
-                <th>Annual solar radiation(kWh/m²/month)</th>
-            </tr>
-            <%user.location.each do |loc|%>
-                <tr>
-                    <td>
-                        <%= link_to(loc.address_repr, location_results_show_path(loc.id))%>
-                    </td>
-                    <%if loc.solar != nil%>
-                    <td><%=loc.solar.capacity%></td>
-                    <td><%=loc.solar.tilt%></td>
-                    <td><%=loc.solar.ac_annual.truncate(2)%></td>
-                    <td><%=loc.solar.solrad_annual.truncate(2)%></td>"
+<div id="wrap">
+        <p>
+        <%if user.location.length > 0%>
+            <%=user.name%>'s locations
+                <table id="locations">
+                    <tr>
+                        <th>Location</th>
+                        <th>Capacity (kW)</th>
+                        <th>Tilt (degrees)</th>
+                        <th>Annual AC power (kWh)</th>
+                        <th>Annual solar radiation(kWh/m²/month)</th>
+                    </tr>
+                    <%user.location.each do |loc|%>
+                        <tr>
+                            <td>
+                                <%= link_to(loc.address_repr, location_results_show_path(loc.id))%>
+                            </td>
+                            <%if loc.solar != nil%>
+                            <td><%=loc.solar.capacity%></td>
+                            <td><%=loc.solar.tilt%></td>
+                            <td><%=loc.solar.ac_annual.truncate(2)%></td>
+                            <td><%=loc.solar.solrad_annual.truncate(2)%></td>"
+                            <%end%>
+                        </tr>
                     <%end%>
-                </tr>
-            <%end%>
-        </table>    
-<%else%>
-You have no locations saved! Please create one.
-<%end%>
-</p>
+                </table>    
+        <%else%>
+        You have no locations saved! Please create one.
+        <%end%>
+        </p>
 
 
-<!-- states_path = where redirecting to after form submitted -->
+        <!-- states_path = where redirecting to after form submitted -->
 
- <%= form_tag states_path, :method => :get, :class => 'form-search' do %>
- <div class="input-append">
-    <%= select_tag("state", options_for_select(@states)  ) %>
+        <%= form_tag states_path, :method => :get, :class => 'form-search' do %>
+        <div class="input-append">
+            <%= select_tag("state", options_for_select(@states)  ) %>
 
-  
-    <%= submit_tag "submit" %>
- </div>
-<% end %>
+        
+            <%= submit_tag "submit" %>
+        </div>
+        <% end %>
 
 
-
+</div>
 
 <!-- Enter Solar , Wind  - Unit Price & Watts, Model Name -->
 <!-- **** Need table to store devices!  -->

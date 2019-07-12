@@ -70,7 +70,7 @@ class LocationsController < ApplicationController
         @solar_monthly_savings = 0.1326 * $global_ac_annual / 12
         @solar_payback_pd = @cost / @solar_monthly_savings /12 
 
-        @winner = (@solar_payback_pd > @payback_pd ? "Solar" : "Wind" )
+        @winner = (@solar_payback_pd < @payback_pd ? "Solar" : "Wind" )
 
     end
 
