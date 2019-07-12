@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+/* p{
+    background-image: "https://www.publicdomainpictures.net/pictures/160000/velka/arriere-plan-bois-texture-1456353976vDQ.jpg#.XSijKl2N1Dc.link"("1056.php");
+    color:#4a4820;
+} */
+
 
 
  #header {
@@ -57,11 +62,20 @@
  }
 
  h1 {
-    color: #69662e;
-  }
+    color: #69662e; 
+
+ }
+
   h2 {
     color: #69662e;
+    font-family:'Rye', cursive;
   }
+
+  h2 {
+    color: #69662e;
+    font-family:'Rye', cursive;
+  }
+
 
   /* iframe {
     /* display: block; */
@@ -134,9 +148,9 @@ img {
     -webkit-columns: 900px;
   -moz-columns: 900px;
   column-width: 900px;
-  -webkit-column-gap: 2em;
-  -moz-column-gap: 2em;
-  column-gap: 2em;    
+  -webkit-column-gap: 4em;
+  -moz-column-gap: 4em;
+  column-gap: 4em;    
   display: inline-block;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
@@ -147,9 +161,10 @@ img {
 }
 
 .flex6 {
+    text-align: left;
     width: 400px;
     background: #DBDAB4;
-    height: 650px;
+    height: 660px;
     /* padding: 1em;
     margin-bottom: 1.3em; */
     border-radius: 8px;
@@ -167,10 +182,53 @@ img {
 
 
 
+.fun-facts-title{
+    margin-left: 70px;
+}
 
+.fun-facts{
+    background-image: https://www.publicdomainpictures.net/pictures/160000/velka/arriere-plan-bois-texture-1456353976vDQ.jpg#.XSijKl2N1Dc.link ("arriere-plan-bois-texture-1456353976vDQ.jpg");
+    background-attachment: fixed;
+    color:#8c893f;
+    margin: 25px;
+}
 
+.flex-container-fun-facts {
+    column-count: 2;
+    -webkit-columns: 710px;
+  -moz-columns: 710px;
+  column-width: 710px;
+  -webkit-column-gap: 2em;
+  -moz-column-gap: 2em;
+  column-gap: 2em;    
+  display: inline-block;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  /* -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid; */
+  box-shadow: 2px 2px 5px rgba(117, 108, 25, 0.03);
+}
 
+.flex-fun-facts {
+    width: 350px;
+    background: #f2f099;
 
+    height: 300px;
+    /* padding: 1em;
+    margin-bottom: 1.3em; */
+    border-radius: 8px;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border-radius: 8px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    display: inline-block;
+    /* -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid; */
+  }
 
 
 

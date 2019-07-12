@@ -1,7 +1,11 @@
 <!-- essentially show page for location query from index. 
 Button to Save to Locations -->
 
-<!-- User saving locations- would need join table! -->
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Rye&display=swap" rel="stylesheet">   
+</head>
+
+<body>
     <div id="header">
                 <div class="title-bar">
                 <h1>Chosen Location: <%=@city.capitalize%>, <%=@state%> (<%=@site_id%>)</h1>
@@ -76,31 +80,48 @@ Button to Save to Locations -->
             <br><br>
  <!-- End Footer   -->
 
-            <%= link_to "Research Another City", "/locations" %><br><br>
-            <br><br>
-            <h3> Fun Facts </h3>
-            <br><br>
-            Least Windy Ten Cities:
-            <ul><%@windiest_cities.each_with_index do |c, index| %>
-                <% if index <10 %>
-                    <li><%=c.city%>, <%=c.state%> </li>
-                <%else%>
-                    <%break%>   
-                <%end%>
-            <%end%>
-            </ul><br><br>
-
-            Windiest Ten Cities:
-            <% @windiest_cities = @windiest_cities.reverse%>
-            <ul><%@windiest_cities.each_with_index do |c, index| %>
-                <% if index <10 %>
-                    <li><%=c.city%>, <%=c.state%> </li>
-                <%else%>
-                    <%break%>   
-                <%end%>
-            <%end%>
-            </ul><br><br>
-
-
+ <%= link_to "Research Another City", "/locations" %><br><br>
+ <br><br>
+ 
+ <!-- <p style="https://3.bp.blogspot.com/-k8W7UwkacXw/U-J-qTkel1I/AAAAAAAAGdE/T-69E0WNcJk/s1600/repeating-vintage-paper-background.jpg";> -->
+    <p>
+        <div class="fun-facts-title">
+        <h2>                 Fun Facts </h2>
+        </div>
+        
+    <div class="flex-container-fun-facts">
+        <div class="fun-facts">
+            <div class="flex-fun-facts">
+                <!-- <p style="https://background-tiles.com/overview/yellow/1056.php;"> -->
+                        <br>
+                        <h3>Least Windy Ten Cities:</h3>
+                        <ul><%@windiest_cities.each_with_index do |c, index| %>
+                            <% if index <10 %>
+                                <li><%=c.city%>, <%=c.state%> </li>
+                            <%else%>
+                                <%break%>   
+                            <%end%>
+                        <%end%>
+                        </ul><br><br>
+            </div>       
+            <div class="flex-fun-facts">
+                        <br>
+                        <h3>Windiest Ten Cities:</h3>
+                        <% @windiest_cities = @windiest_cities.reverse%>
+                        <ul><%@windiest_cities.each_with_index do |c, index| %>
+                            <% if index <10 %>
+                                <li><%=c.city%>, <%=c.state%> </li>
+                            <%else%>
+                                <%break%>   
+                            <%end%>
+                        <%end%>
+                        </ul><br><br>
+            </div>
+            <!-- </p> -->
+        </div>
+    </div>
+    
+    </p>
+</body>
             <%= %>
 
